@@ -4,6 +4,9 @@ metadata:
   name: patient
   namespace: mysql-repl
 spec:
+  selector:
+      matchLabels:
+        app: patient
   replicas: 1
   template:
     metadata:
@@ -11,11 +14,11 @@ spec:
         app: patient
     spec:
       containers:         
-        - image: 'neethirocks/patient:1.0'
-          name: patient
+        - name: patient
+          image: 'neethirocks/patient:1.0'          
           ports:
             - containerPort: 80
-        - env:
+          env:
           - name: spring_jpa_database
             value: mysql
           - name: spring_datasource_url

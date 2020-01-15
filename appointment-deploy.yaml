@@ -2,6 +2,7 @@ apiVersion: extensions/v1
 kind: Deployment
 metadata:
   name: appointment
+  namespace: mysql-repl
 spec:
   replicas: 2
   template:

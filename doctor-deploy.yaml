@@ -4,7 +4,7 @@ metadata:
   name: doctor
   namespace: mysql-repl
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:

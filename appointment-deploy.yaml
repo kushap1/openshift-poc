@@ -15,7 +15,7 @@ spec:
           image: 'neethirocks/appointment:1.0'
           ports:
             - containerPort: 80
-        - env:
+          env:
           - name: spring_jpa_database
             value: mysql
           - name: spring_datasource_url

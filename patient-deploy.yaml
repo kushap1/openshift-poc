@@ -22,7 +22,7 @@ spec:
           - name: spring_jpa_database
             value: mysql
           - name: spring_datasource_url
-            value: jdbc:mysql://nacto-db:32000/nacto?createDatabaseIfNotExist=true&useSSL=false
+            value: jdbc:mysql://nacto-db/nacto?createDatabaseIfNotExist=true&useSSL=false
           - name: spring_datasource_username
             valueFrom:
               secretKeyRef:

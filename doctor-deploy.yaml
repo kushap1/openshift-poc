@@ -1,0 +1,58 @@
+---
+apiVersion: v1    
+kind: Secret
+metadata:
+  name: doctor-secret
+type: Opaque
+data:
+  MYSQL_DATABASE: bmFjdG8= #nacto
+  MYSQL_USER: cm9vdA== #root
+  MYSQL_PASSWORD: cGFzc3dvcmQ= #password
+---
+apiVersion: extensions/v1
+kind: Deployment
+metadata:
+  name: doctor
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: doctor
+    spec:
+      containers:
+        - name: doctor
+          image: 'neethirocks/doctor:1.0'
+          ports:
+            - containerPort: 80
+        - env:
+          - name: spring_jpa_database
+            value: mysql
+          - name: spring_datasource_url
+            value: jdbc:mysql://mysql-master:3306/test?useSSL=false
+          - name: spring_datasource_username
+            valueFrom:
+              secretKeyRef:
+                name: doctor-secret
+                key: MYSQL_USER
+          - name: spring_datasource_password
+            valueFrom:
+              secretKeyRef:
+                name: doctor-secret
+                key: MYSQL_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: doctor-service
+  labels:
+    name: doctor-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: '8080'
+  selector:
+    app: doctor
+  type: NodePort

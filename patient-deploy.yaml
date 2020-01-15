@@ -10,9 +10,9 @@ spec:
       labels:
         app: patient
     spec:
-      containers:
-        - name: patient
-          image: 'neethirocks/patient:1.0'
+      containers:         
+        - image: 'neethirocks/patient:1.0'
+          name: patient
           ports:
             - containerPort: 80
         - env:

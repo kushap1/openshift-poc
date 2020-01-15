@@ -55,6 +55,6 @@ spec:
     port: 3306
     targetPort: 3306
     protocol: TCP
-    nodePort: 32000
+    nodePort: 32001
   selector:
     app: nacto-db

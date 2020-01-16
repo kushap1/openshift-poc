@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nacto-db
-  namespace: mysql-repl
+  name: healthdb
+  namespace: healthapp
 spec:
   selector:
     matchLabels:
-      app: nacto-db
+      app: healthdb
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: nacto-db
+        app: healthdb
     spec:
       containers:
       - image: registry.redhat.io/rhscl/mysql-57-rhel7
@@ -42,19 +42,19 @@ spec:
                 key: MYSQL_PASSWORD
         ports:
         - containerPort: 3306
-          name: nacto-db
+          name: healthdb
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nacto-db
+  name: healthdb
 spec:
   type: NodePort
   ports:
-  - name: nacto-db
+  - name: healthdb
     port: 3306
     targetPort: 3306
     protocol: TCP
     nodePort: 32001
   selector:
-    app: nacto-db
+    app: healthdb

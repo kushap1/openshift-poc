@@ -17,7 +17,7 @@ spec:
         - name: appointment
           image: 'neethirocks/appointment:1.0'          
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
           - name: spring_jpa_database
             value: mysql
@@ -43,7 +43,7 @@ metadata:
 spec:
   ports:
     - port: 8080
-      targetPort: 80
+      targetPort: 8080
       protocol: TCP
       name: '8080'
   selector:

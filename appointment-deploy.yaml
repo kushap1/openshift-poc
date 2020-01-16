@@ -15,7 +15,7 @@ spec:
     spec:
       containers:         
         - name: appointment
-          image: 'neethirocks/appointment:1.0'          
+          image: 'neethirocks/appointment:1.1'          
           ports:
             - containerPort: 8080
           env:

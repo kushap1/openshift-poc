@@ -15,7 +15,7 @@ spec:
     spec:
       containers:         
         - name: doctor
-          image: 'neethirocks/doctor:1.0'          
+          image: 'neethirocks/doctor:1.1'          
           ports:
             - containerPort: 8080
           env:

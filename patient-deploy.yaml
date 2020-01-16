@@ -15,9 +15,9 @@ spec:
     spec:
       containers:         
         - name: patient
-          image: 'neethirocks/patient:1.0'          
+          image: 'neethirocks/patient:1.1'          
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
           - name: spring_jpa_database
             value: mysql
@@ -42,8 +42,8 @@ metadata:
     name: patient-service
 spec:
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8080
+      targetPort: 8080
       protocol: TCP
       name: '8080'
   selector:

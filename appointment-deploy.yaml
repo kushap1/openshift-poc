@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: appointment
-  namespace: mysql-repl
+  namespace: healthapp
 spec:
   selector:
       matchLabels:
@@ -22,7 +22,7 @@ spec:
           - name: spring_jpa_database
             value: mysql
           - name: spring_datasource_url
-            value: jdbc:mysql://nacto-db:3306/test?createDatabaseIfNotExist=true&useSSL=false
+            value: jdbc:mysql://healthdb:3306/test?createDatabaseIfNotExist=true&useSSL=false
           - name: spring_datasource_username
             valueFrom:
               secretKeyRef:

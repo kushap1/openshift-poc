@@ -6,14 +6,15 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
-    storage: 1Gi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   nfs:
     path: /opt/testingdata/pr
-    server: 192.168.8.61    
+    server: 192.168.8.61
+  persistentVolumeReclaimPolicy: Recycle    
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

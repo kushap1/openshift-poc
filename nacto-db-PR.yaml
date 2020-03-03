@@ -55,6 +55,5 @@ spec:
     port: 3306
     targetPort: 3306
     protocol: TCP
-    nodePort: 32001
   selector:
     app: healthdb

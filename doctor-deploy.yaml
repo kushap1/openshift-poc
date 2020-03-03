@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testing-doctor
+  name: doctor
   namespace: testing-project1
 spec:
   selector:
       matchLabels:
-        app: testing-doctor
+        app: doctor
   replicas: 1
   template:
     metadata:
       labels:
-        app: testing-doctor
+        app: doctor
     spec:
       containers:         
-        - name: testing-doctor
-          image: 'neethirocks/testing-doctor:1.1'          
+        - name: doctor
+          image: 'neethirocks/doctor:1.1'          
           ports:
             - containerPort: 8080
           env:
@@ -37,9 +37,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: testing-doctor-service
+  name: doctor-service
   labels:
-    name: testing-doctor-service
+    name: doctor-service
 spec:
   ports:
     - port: 80
@@ -48,5 +48,5 @@ spec:
       name: '8080'
       nodePort: 31846
   selector:
-    app: testing-doctor
+    app: doctor
   type: NodePort

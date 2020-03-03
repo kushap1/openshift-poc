@@ -23,12 +23,13 @@ metadata:
   labels:
    app: testing-pv-claim
 spec:
-  storageClassName: manual
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
+  volumeName: testing-pv      
 ---
 apiVersion: apps/v1
 kind: Deployment

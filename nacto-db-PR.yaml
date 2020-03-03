@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testinghealthdb
+  name: healthdb
   namespace: testing-project1
 spec:
   selector:
     matchLabels:
-      app: testinghealthdb
+      app: healthdb
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: testinghealthdb
+        app: healthdb
     spec:
       containers:
       - image: mysql:5.7
@@ -42,19 +42,19 @@ spec:
                 key: MYSQL_PASSWORD
         ports:
         - containerPort: 3306
-          name: testinghealthdb
+          name: healthdb
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: testinghealthdb
+  name: healthdb
 spec:
   type: NodePort
   ports:
-  - name: testinghealthdb
+  - name: healthdb
     port: 3306
     targetPort: 3306
     protocol: TCP
     nodePort: 32001
   selector:
-    app: testinghealthdb
+    app: healthdb

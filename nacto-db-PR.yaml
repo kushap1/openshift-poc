@@ -46,6 +46,8 @@ spec:
     spec:
       containers:
       - image: mysql:5.7
+        securityContext:
+          privileged: true 
         name: mysql
         env:
         - name: MYSQL_SERVER_CONTAINER

@@ -1,3 +1,33 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: testing-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/testingdataDR"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: testing-pv-claim
+  labels:
+   app: testing-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -43,6 +73,14 @@ spec:
         ports:
         - containerPort: 3306
           name: testinghealthdb
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: testing-pv-claim
+          
 ---
 apiVersion: v1
 kind: Service
@@ -55,6 +93,5 @@ spec:
     port: 3306
     targetPort: 3306
     protocol: TCP
-    nodePort: 32001
   selector:
     app: testinghealthdb

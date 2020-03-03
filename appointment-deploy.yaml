@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: appointment
-  namespace: healthapp
+  namespace: testing-project1
 spec:
   selector:
       matchLabels:

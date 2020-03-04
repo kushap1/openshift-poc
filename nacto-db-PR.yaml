@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /opt/testingdata/pr
+    path: /opt/testingdata/pr/var/lib/mysql
     server: 192.168.8.61
   persistentVolumeReclaimPolicy: Recycle    
 ---

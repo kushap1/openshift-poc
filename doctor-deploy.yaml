@@ -46,7 +46,7 @@ spec:
       targetPort: 8080
       protocol: TCP
       name: '8080'
-      nodePort: 31846
+      nodePort: 31370
   selector:
     app: doctor
   type: NodePort

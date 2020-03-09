@@ -8,11 +8,13 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 1Gi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/mnt/testingdataDR/dr/var/lib/mysql"
+  nfs:
+    path: /opt/testingdata/pr/var/lib/mysql
+    server: 192.168.8.61
+  persistentVolumeReclaimPolicy: Recycle
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
